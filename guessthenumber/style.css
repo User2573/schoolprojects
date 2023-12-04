@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
     --black: 7 7 10;
@@ -45,14 +45,12 @@ body {
 #home-start {
     --bg-opacity: 0.5;
     all: unset;
-    font-family: 'Inter';
     display: grid;
     place-content: center;
     font-size: 1.5rem;
     height: 4rem;
     background: rgb(var(--highlight) / var(--bg-opacity));
     border: 3px solid rgb(var(--highlight) / .5);
-    animation: 3s cubic-bezier(1,0,.5,1) 0s infinite alternate running glow;
     position: relative;
     overflow: hidden;
 }
@@ -61,16 +59,18 @@ body {
     inherits: false;
     initial-value: 0;
 }
-@keyframes glow {
-    0% { --bg-opacity: 0.5; }
-    100% { --bg-opacity: 0.8; }
-}
 #home-start:hover {
     animation: 1s cubic-bezier(.5,0,0,1) 0s 1 forwards running grow;
 }
 @keyframes grow {
-    0% { font-size: 1.5rem; }
-    100% { font-size: 1.8rem; }
+    0% {
+        font-size: 1.5rem;
+        --bg-opacity: .5;
+    }
+    100% {
+        font-size: 1.8rem;
+        --bg-opacity: .8;
+    }
 }
 #home-start:hover::after {
     content: '';
@@ -88,4 +88,30 @@ body {
 @keyframes glint {
     0% { left: -10%; }
     100% { left: 110%; }
+}
+
+
+
+
+#game {
+    display: grid;
+    place-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+#game p {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0;
+}
+
+#game-input {
+    all: unset;
+    border: 1px solid rgb(var(--light) / .5);
+    font-family: Source Code Pro;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: .5rem 1rem;
+    margin: 0 0 1rem 0;
 }
