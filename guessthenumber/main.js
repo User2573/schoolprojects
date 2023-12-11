@@ -16,14 +16,21 @@ const settings = {
     min: 0,
     max: 100,
     maxHealth: 10,
-    updateDisplay() {
-        gameInfo.innerText = `${settings.min} - ${settings.max}`;
-    }
 };
 
 const game = {
     currentValue: -1,
-    health: settings.maxHealth
+    health: settings.maxHealth,
+
+    updateRange() {
+        gameInfo.innerText = `${settings.min} - ${settings.max}`;
+    },
+    updateHealth() {
+        ;
+    },
+    generateValue() {
+        game.currentValue = settings.min + Math.floor(Math.random() * (settings.max - settings.min));
+    },
 };
 
 
@@ -34,7 +41,7 @@ startButton.addEventListener('click', async () => {
     gameContainer.style.opacity = '0';
     gameContainer.style.display = '';
     gameMessage.innerText = messages.start;
-    settings.updateDisplay();
+    game.updateRange();
 
     const animationProperties = {
         fill: 'forwards',
@@ -53,6 +60,7 @@ startButton.addEventListener('click', async () => {
 })
 
 
+game.generateValue();
 
 gameInput.addEventListener('keydown', e => {
     // allow only digit
@@ -62,7 +70,6 @@ gameInput.addEventListener('keydown', e => {
         e.preventDefault();
     }
 
-    
 
     if (e.code != 'Enter') return;
 
